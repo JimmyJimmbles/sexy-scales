@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Keyboard } from "./components";
+import { baseNotes } from "./data";
 
 function App() {
+  const buildKeys = (max: number) => {
+    let keys = [];
+    for (let i = 0; i < Math.floor(max / baseNotes.length); i++) {
+      keys.push(baseNotes);
+    }
+    return keys;
+  };
+  const maxKeys = 49;
+  const keys = buildKeys(maxKeys);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Keyboard keys={keys} />
     </div>
   );
 }
